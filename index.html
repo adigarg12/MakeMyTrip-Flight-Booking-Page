@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Search - MakeMyTrip Clone</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+  <div class="flight-search-container">
+    <h2>Flight Search</h2>
+
+    <div class="trip-type">
+      <button class="trip-btn active" data-type="one-way">One Way</button>
+      <button class="trip-btn" data-type="round-trip">Round Trip</button>
+      <button class="trip-btn" data-type="multi-city">Multi City</button>
+    </div>
+
+    <form id="flight-search-form">
+      <div class="input-group">
+        <label for="from">From</label>
+        <div class="input-box">
+          <i class="fas fa-plane-departure"></i>
+          <input type="text" id="from" placeholder="Enter city or airport">
+        </div>
+      </div>
+
+      <button type="button" id="swap-btn"><i class="fas fa-exchange-alt"></i></button>
+
+      <div class="input-group">
+        <label for="to">To</label>
+        <div class="input-box">
+          <i class="fas fa-plane-arrival"></i>
+          <input type="text" id="to" placeholder="Enter city or airport">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="departure-date">Departure Date</label>
+        <div class="input-box">
+          <i class="fas fa-calendar-alt"></i>
+          <input type="text" id="departure-date" placeholder="Select date">
+        </div>
+      </div>
+
+      <div class="input-group return-date-group" style="display:none;">
+        <label for="return-date">Return Date</label>
+        <div class="input-box">
+          <i class="fas fa-calendar-alt"></i>
+          <input type="text" id="return-date" placeholder="Select date">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="travelers">Travelers</label>
+        <div class="input-box">
+          <i class="fas fa-users"></i>
+          <select id="travelers">
+            <option value="1">1 Traveler</option>
+            <option value="2">2 Travelers</option>
+            <option value="3">3 Travelers</option>
+            <option value="4">4 Travelers</option>
+            <option value="5">5 Travelers</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="class">Class</label>
+        <div class="input-box">
+          <i class="fas fa-cogs"></i>
+          <select id="class">
+            <option value="economy">Economy</option>
+            <option value="business">Business</option>
+            <option value="first-class">First Class</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="search-btn">Search Flights</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      flatpickr("#departure-date", {});
+      flatpickr("#return-date", {});
+
+      const tripButtons = document.querySelectorAll(".trip-btn");
+      const returnDateGroup = document.querySelector(".return-date-group");
+      
+      tripButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          tripButtons.forEach(btn => btn.classList.remov
